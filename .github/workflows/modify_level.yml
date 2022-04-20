@@ -13,15 +13,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.YUNOHOST_BOT_TOKEN }}
-      - name: pull-request
+      - name: Open Pull Request
         uses: repo-sync/pull-request@v2
         with:
           source_branch: "modify_level"
           destination_branch: "master"
           pr_title: "Update app's level"
           pr_body: |
-            Time for our weekly catalog update!
-            
+            Time for our weekly catalog update! \
             Feel free to request a delay before merging if a fix for an app is being tested, by commenting with a link to the CI job.
           pr_reviewer: "YunoHost/apps"
           github_token: ${{ secrets.YUNOHOST_BOT_TOKEN }}
