@@ -9,7 +9,10 @@ jobs:
   open-pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Fetch the source code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
