@@ -1,0 +1,30 @@
+name: Update apps' level
+
+on:
+  push:
+    branches: [ modify_level ]
+  workflow_dispatch:
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Apps catalog weekly level update
+          committer: 'yunohost-bot <yunohost-bot@users.noreply.github.com>'
+          author: 'yunohost-bot <yunohost-bot@users.noreply.github.com>'
+          signoff: false
+          base: master
+          branch: modify_level
+          delete-branch: true
+          title: "Update app's level"
+          body: |
+            Time for our weekly catalog update!
+            
+            Feel free to request a delay before merging if a fix for an app is being tested, by commenting with a link to the CI job.
+          team-reviewers: |
+            YunoHost/apps
+          draft: false
